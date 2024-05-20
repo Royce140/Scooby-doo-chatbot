@@ -48,6 +48,21 @@ text_splitter = RecursiveCharacterTextSplitter(
     length_function = len,
     add_start_index = True,)
 texts = text_splitter.split_documents(data)
+# you can also set your api keys as environment variables
+# And the root-level secrets are also accessible as environment variables:
+
+st.write(
+    "Has environment variables been set:",
+    os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"],
+)
+st.write("Secret Key", st.secrets["pinecone_secret_key"])
+
+# And the root-level secrets are also accessible as environment variables:
+
+st.write(
+    "Has environment variables been set:",
+    os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"],
+)
 
 embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY']) # set openai_api_key = 'your_openai_api_key'
 
@@ -64,7 +79,6 @@ if 'rag' not in pc.list_indexes().names():
         )
     )
 
-# you can also set your api keys as environment variables
 
 embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
 vectordb = PCS.from_documents(texts, embeddings, index_name='rag')
