@@ -7,4 +7,4 @@ pinecone-client
 openai
 pypdf
 streamlit
-
+initial
