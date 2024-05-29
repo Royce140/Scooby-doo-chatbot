@@ -20,7 +20,7 @@ class Chatbot:
         openai_api_key = st.secrets["openai_api_key"]
         #os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
-        #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
+        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
         file_path = 'C:\\Users\\royce\\OneDrive\\Desktop\\rag\\Rag.pdf'
         loader = PyPDFLoader(file_path)
         data = loader.load()
@@ -61,7 +61,7 @@ class Chatbot:
         openai_api_key = st.secrets["openai_api_key"]
         #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
-        #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
         embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
         vectordb = PCS.from_existing_index('rag',embeddings)
         self.retriever = vectordb.as_retriever()
@@ -81,7 +81,7 @@ class Chatbot:
 openai_api_key = st.secrets["openai_api_key"]
 #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
-#os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
 chatbot = Chatbot()
 
 embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
