@@ -62,7 +62,7 @@ class Chatbot:
         openai_api_key = st.secrets["openai_api_key"]
         #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
-        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+        os.environ['PINECONE_API_KEY'] =st.secrets["pinecone_api_key"]
         pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
         embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
         vectordb = PCS.from_existing_index('rag',embeddings)
@@ -83,7 +83,7 @@ class Chatbot:
 openai_api_key = st.secrets["openai_api_key"]
 #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
-os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+os.environ['PINECONE_API_KEY'] =st.secrets["pinecone_api_key"]
 chatbot = Chatbot()
 
 embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
