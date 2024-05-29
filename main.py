@@ -6,18 +6,6 @@ st.title("Scooby-Doo Chatbot")
 # Setup chatbot
 chatbot = Chatbot()
 
-st.write(
-    "Has environment variables been set:",
-    os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"],
-)
-st.write("Secret Key", st.secrets["pinecone_secret_key"])
-
-# And the root-level secrets are also accessible as environment variables:
-
-st.write(
-    "Has environment variables been set:",
-    os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"],
-)
 #Setup sidebar
 #sidebar = st.sidebar
 #check = sidebar.button("Setup chatbot")
