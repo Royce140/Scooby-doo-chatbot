@@ -59,10 +59,10 @@ class Chatbot:
             template=template
         )
         openai_api_key = st.secrets["openai_api_key"]
-        os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
+        #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
-        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
-        embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+        #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+        embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
         vectordb = PCS.from_existing_index('rag',embeddings)
         self.retriever = vectordb.as_retriever()
         memory = ConversationBufferMemory(
@@ -77,12 +77,12 @@ class Chatbot:
             combine_docs_chain_kwargs={"prompt": PROMPT}
         )
 openai_api_key = st.secrets["openai_api_key"]
-os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
+#os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
-os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+#os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
 chatbot = Chatbot()
 
-embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 chatbot.retrieval()
 
 # Corrected generate_response function to access chain attribute properly
