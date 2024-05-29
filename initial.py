@@ -78,24 +78,13 @@ class Chatbot:
         )
 
 
-st.write(
-    "Has environment variables been set:",
-    os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"],
-)
-
-# And the root-level secrets are also accessible as environment variables:
-
-st.write(
-    "Has environment variables been set:",
-    os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"],
-)
 openai_api_key = st.secrets["openai_api_key"]
 #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
 #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
 chatbot = Chatbot()
 
-embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+embeddings = OpenAIEmbeddings(openai_api_key=openai_api_key)
 chatbot.retrieval()
 
 # Corrected generate_response function to access chain attribute properly
