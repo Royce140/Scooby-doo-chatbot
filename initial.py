@@ -58,10 +58,12 @@ class Chatbot:
             input_variables=["context", "chat_history", "question"],
             template=template
         )
+        
         openai_api_key = st.secrets["openai_api_key"]
         #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
         os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
+        pc = Pinecone(api_key=os.environ['PINECONE_API_KEY'])
         embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
         vectordb = PCS.from_existing_index('rag',embeddings)
         self.retriever = vectordb.as_retriever()
