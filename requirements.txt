@@ -1,4 +1,4 @@
-
+tiktoken
 langchain
 langchain_community
 pinecone
