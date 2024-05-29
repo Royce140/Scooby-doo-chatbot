@@ -62,7 +62,7 @@ class Chatbot:
         #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
         #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_api_key"]
-        embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
+        embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
         vectordb = PCS.from_existing_index('rag',embeddings)
         self.retriever = vectordb.as_retriever()
         memory = ConversationBufferMemory(
@@ -76,6 +76,19 @@ class Chatbot:
             memory=memory,
             combine_docs_chain_kwargs={"prompt": PROMPT}
         )
+
+
+st.write(
+    "Has environment variables been set:",
+    os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"],
+)
+
+# And the root-level secrets are also accessible as environment variables:
+
+st.write(
+    "Has environment variables been set:",
+    os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"],
+)
 openai_api_key = st.secrets["openai_api_key"]
 #os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
