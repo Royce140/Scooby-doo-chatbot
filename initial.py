@@ -17,9 +17,9 @@ class Chatbot:
 
     def setup(self):
         openai_api_key = st.secrets["openai_api_key"]
-        os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
+        #os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
         pinecone_api_key = st.secrets["pinecone_api_key"]
-        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
+        #os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
         file_path = 'C:\\Users\\royce\\OneDrive\\Desktop\\rag\\Rag.pdf'
         loader = PyPDFLoader(file_path)
         data = loader.load()
@@ -30,9 +30,9 @@ class Chatbot:
             add_start_index=True,
         )
         texts = text_splitter.split_documents(data)
-        embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+        embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
 
-        pc = Pinecone(api_key=os.environ.get("PINECONE_API_KEY"))
+        pc = Pinecone(api_key=st.secrets["pinecone_api_key"])
         # Now you can do stuff with Pinecone
         if 'rag' not in pc.list_indexes().names():
             pc.create_index(
@@ -72,12 +72,12 @@ class Chatbot:
             combine_docs_chain_kwargs={"prompt": PROMPT}
         )
 openai_api_key = st.secrets["openai_api_key"]
-os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
+#os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
-os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
+#os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
 chatbot = Chatbot()
 
-embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
+embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
 chatbot.retrieval(embeddings)
 
 # Corrected generate_response function to access chain attribute properly
