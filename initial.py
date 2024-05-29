@@ -68,7 +68,8 @@ class Chatbot:
             memory=memory,
             combine_docs_chain_kwargs={"prompt": PROMPT}
         )
-
+os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
+os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
 chatbot = Chatbot()
 
 embeddings = OpenAIEmbeddings(openai_api_key=os.environ['OPENAI_API_KEY'])
