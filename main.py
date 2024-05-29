@@ -24,8 +24,8 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    with st.chat_message("assistant"):
+    with st.chat_message("Shaggy"):
         response = generate_response(prompt)
         st.markdown(response)
 
-    st.session_state.messages.append({"role": "assistant", "content": response})
+    st.session_state.messages.append({"role": "Shaggy", "content": response})
