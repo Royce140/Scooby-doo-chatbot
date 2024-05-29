@@ -7,8 +7,8 @@ st.title("Scooby-Doo Chatbot")
 chatbot = Chatbot()
 
 #Setup sidebar
-#sidebar = st.sidebar
-#check = sidebar.button("Setup chatbot")
+sidebar = st.sidebar
+check = sidebar.button("Setup chatbot")
 if check:
     chatbot.setup()
 
