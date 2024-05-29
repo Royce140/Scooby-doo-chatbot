@@ -16,6 +16,10 @@ class Chatbot:
         self.retriever = None
 
     def setup(self):
+        openai_api_key = st.secrets["openai_api_key"]
+        os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
+        pinecone_api_key = st.secrets["pinecone_api_key"]
+        os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
         file_path = 'C:\\Users\\royce\\OneDrive\\Desktop\\rag\\Rag.pdf'
         loader = PyPDFLoader(file_path)
         data = loader.load()
@@ -40,7 +44,6 @@ class Chatbot:
                     region='us-west-2'
                 )
             )
-        vectordb = PCS.from_documents(texts, embeddings, index_name='rag')
                     
 
     def retrieval(self,embeddings):
@@ -68,7 +71,9 @@ class Chatbot:
             memory=memory,
             combine_docs_chain_kwargs={"prompt": PROMPT}
         )
+openai_api_key = st.secrets["openai_api_key"]
 os.environ['OPENAI_API_KEY'] == st.secrets["openai_secret_key"]
+pinecone_api_key = st.secrets["pinecone_api_key"]
 os.environ['PINECONE_API_KEY'] == st.secrets["pinecone_secret_key"]
 chatbot = Chatbot()
 
