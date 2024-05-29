@@ -1,5 +1,6 @@
 
 langchain
+langchain_community
 pinecone
 python-decouple
 datasets==2.12.0
