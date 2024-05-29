@@ -7,6 +7,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.chains import ConversationalRetrievalChain
 from pinecone import Pinecone, ServerlessSpec
 from langchain import PromptTemplate
+import streamlit as st
 import os
 import re
 class Chatbot:
