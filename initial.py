@@ -58,7 +58,9 @@ class Chatbot:
             input_variables=["context", "chat_history", "question"],
             template=template
         )
-
+        openai_api_key = st.secrets["openai_api_key"]
+        embeddings = OpenAIEmbeddings(openai_api_key=st.secrets["openai_api_key"])
+        pinecone_api_key = st.secrets["pinecone_api_key"]
         vectordb = PCS.from_existing_index('rag',embeddings)
         self.retriever = vectordb.as_retriever()
         memory = ConversationBufferMemory(
