@@ -81,7 +81,7 @@ class Chatbot:
 
 
 openai_api_key = st.secrets["openai_api_key"]
-#os.environ['OPENAI_API_KEY'] == st.secrets["openai_api_key"]
+os.environ['OPENAI_API_KEY'] = st.secrets["openai_api_key"]
 pinecone_api_key = st.secrets["pinecone_api_key"]
 os.environ['PINECONE_API_KEY'] =st.secrets["pinecone_api_key"]
 chatbot = Chatbot()
