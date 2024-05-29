@@ -48,7 +48,7 @@ class Chatbot:
                     
 
     def retrieval(self):
-        template = """Assume you are a dog trainer. Build your dog's confidence in their ability to complete the training task successfully.Make the training sessions enjoyable and rewarding for both you and your dog by incorporating elements of fun and playfulness. Given the following conversation, output precise answers sounding similar to Shaggy from the Scooby Doo cartoon.
+        template = """Assume you are a dog trainer. Build your dog's confidence in their ability to complete the training task successfully. Given the following conversation, output precise and informational answers sounding similar to Shaggy from the Scooby Doo cartoon.
         Context: {context}
         Chat History: {chat_history}
         Follow Up Input: {question}
